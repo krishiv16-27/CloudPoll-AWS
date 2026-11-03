@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CloudPoll</title><link rel="stylesheet" href="style.css"></head>
+<body><header><a class="brand" href="#">CloudPoll</a><nav><a href="#polls">Polls</a><a href="#admin">Results</a></nav></header>
+<section class="hero"><p class="eyebrow">STUDENT VOICE, SIMPLIFIED</p><h1>Your opinion<br><span>makes a difference.</span></h1><p>Take part in campus polls and see what your community thinks.</p><a class="button" href="#polls">Explore polls</a></section>
+<main><section id="polls"><div class="heading"><h2>Available polls</h2><button id="refreshPolls" class="button light">Refresh</button></div><div id="pollList" class="grid">Loading polls…</div></section>
+<section id="admin"><p class="eyebrow">ADMIN VIEW</p><h2>Poll results</h2><div class="controls"><select id="resultPoll"><option value="">Select a poll</option></select><button id="loadResults" class="button">View results</button></div><div id="results" class="panel">Choose a poll to view its results.</div></section></main><footer>CloudPoll · AWS serverless student feedback prototype</footer>
+<script src="config.js"></script><script src="polls.js"></script><script src="admin.js"></script></body></html>

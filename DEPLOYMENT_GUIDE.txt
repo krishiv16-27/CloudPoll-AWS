@@ -1,0 +1,39 @@
+CLOUDPOLL DEPLOYMENT CHECKLIST
+
+REGION: ap-south-1 (Mumbai)
+
+DYNAMODB
+Table: CloudPoll
+Partition key: pollId (String)
+Sort key: responseId (String)
+Add sample item:
+pollId=P001, responseId=POLL, recordType=POLL,
+question="Which programming language do you prefer?",
+options=["Python","Java","C++","JavaScript"]
+
+LAMBDA
+Create CloudPoll-GetPolls, CloudPoll-SubmitResponse, CloudPoll-GetResults.
+Runtime Node.js; handler index.handler; environment variable TABLE_NAME=CloudPoll.
+Package each handler separately with dependencies from backend/package.json.
+IAM table-scoped permissions:
+GetPolls: dynamodb:Scan
+SubmitResponse: dynamodb:GetItem, dynamodb:PutItem
+GetResults: dynamodb:GetItem, dynamodb:Query
+Also attach basic Lambda execution/logging permissions.
+
+API GATEWAY HTTP API
+GET /polls -> CloudPoll-GetPolls
+POST /responses -> CloudPoll-SubmitResponse
+GET /results -> CloudPoll-GetResults
+Configure CORS for your S3 website origin, GET and POST, Content-Type.
+Deploy stage prod and copy invoke URL.
+
+FRONTEND
+Paste the API invoke URL in frontend/config.js as window.CLOUDPOLL_API_URL.
+Upload the CONTENTS of frontend/ to the S3 website bucket.
+
+SECURITY
+The sample results endpoint has no authentication. Do not expose private student data.
+Restrict CORS to your site origin. Never upload AWS credentials to GitHub.
+S3 website endpoints use HTTP; use CloudFront for HTTPS.
+Check current AWS pricing and free-tier eligibility before deploying.
