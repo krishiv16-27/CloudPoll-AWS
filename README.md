@@ -52,6 +52,8 @@ Poll items use `responseId=POLL`; response items use `responseId=RESP#<unique-id
 This is an educational prototype. The results endpoint is not authenticated and must not be used for private student data. Restrict CORS and add authentication before real use. Never commit AWS keys or secrets. S3 website endpoints use HTTP; use CloudFront if HTTPS is required.
 
 ## Author
-Tiya Saluja  
+Krishiv Taneja  
+23BCE0848  
 B.Tech Computer Science and Engineering  
+4th Year  
 Vellore Institute of Technology
